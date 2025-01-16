@@ -1,0 +1,14 @@
+<div class="dashboard-container">
+    <app-sidebar-emp (tableSelected)="onTableSelected($event)"></app-sidebar-emp>
+    
+    <section class="section is-main-section">
+      <div *ngIf="selectedTableType === 'EmpDashboard'; else tableContent" class="welcome-container">
+        <h1>Welcome to the Employee Dashboard</h1>
+      </div>
+      
+      <ng-template #tableContent>
+        <app-table-emp [tableType]="selectedTableType"></app-table-emp>
+      </ng-template>
+    </section>
+  </div>
+  

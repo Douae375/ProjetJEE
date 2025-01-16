@@ -1,0 +1,59 @@
+<aside class="aside is-placed-left is-expanded">
+  <div class="aside-tools">
+    <div class="aside-tools-label">
+      <span><b>Admin</b> Home</span>
+    </div>
+  </div>
+  <div class="menu is-menu-main">
+    <p class="menu-label">General</p>
+    <ul class="menu-list">
+      <li>
+        <a (click)="selectTable('Dashboard')" [ngClass]="{'is-active': selectedTableType === 'Dashboard'}" class="has-icon">
+          <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
+          <span class="menu-item-label">Dashboard</span>
+        </a>
+      </li>
+    </ul>
+    <p class="menu-label">Tables</p>
+    <ul class="menu-list">
+    
+      <li>
+        <a (click)="selectTable('Departement')" [ngClass]="{'is-active': selectedTableType === 'Departement'}" class="has-icon">
+          <span class="icon"><i class="mdi mdi-office-building"></i></span>
+          <span class="menu-item-label">Departement</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="selectTable('Employees')" [ngClass]="{'is-active': selectedTableType === 'Employees'}" class="has-icon">
+          <span class="icon"><i class="mdi mdi-account"></i></span>
+          <span class="menu-item-label">Employees</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="selectTable('Absences')" [ngClass]="{'is-active': selectedTableType === 'Absences'}" class="has-icon">
+          <span class="icon"><i class="mdi mdi-calendar-clock"></i></span>
+          <span class="menu-item-label">Absences</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="selectTable('Conges')" [ngClass]="{'is-active': selectedTableType === 'Conges'}" class="has-icon">
+          <span class="icon"><i class="mdi mdi-calendar-multiselect"></i></span>
+          <span class="menu-item-label">Congés</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="selectTable('Salaries')" [ngClass]="{'is-active': selectedTableType === 'Salaries'}" class="has-icon">
+          <span class="icon"><i class="mdi mdi-cash"></i></span>
+          <span class="menu-item-label">Salaries</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="aside-logout">
+    <button (click)="logout()" class="logout-button">
+      <span class="icon"><i class="mdi mdi-logout"></i></span>
+      <span>Logout</span>
+    </button>
+  </div>
+</aside>

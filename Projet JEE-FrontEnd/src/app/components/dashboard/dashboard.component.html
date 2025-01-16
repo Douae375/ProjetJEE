@@ -1,0 +1,25 @@
+<div class="dashboard-container">
+  <app-sidebar (tableSelected)="onTableSelected($event)"></app-sidebar>
+  
+  <section class="section is-main-section">
+    <div *ngIf="selectedTableType === 'Dashboard'; else tableContent" class="welcome-container">
+      <h1>Welcome to the RH Dashboard</h1>
+      <app-stats-cards></app-stats-cards>
+
+      <div class="charts-container">
+        <div class="chart-item">
+          <app-department-chart></app-department-chart>
+        </div>
+        <div class="chart-item">
+          <app-conge-chart></app-conge-chart>
+        </div>
+      </div>
+    </div>
+    
+    <ng-template #tableContent>
+      <ng-container *ngIf="selectedTableType">
+        <app-table [tableType]="selectedTableType"></app-table>
+      </ng-container>
+    </ng-template>
+  </section>
+</div>

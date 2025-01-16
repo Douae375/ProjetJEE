@@ -1,0 +1,54 @@
+<div class="content-wrapper pt-5 bg-white">
+  <div class="container text-center">
+    <div class="welcome-message my-4">
+      <h1>Welcome to the Technician Dashboard</h1>
+      <p class="lead">Manage your tickets efficiently and keep track of your work.</p>
+      <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+    </div>
+
+    <div class="card mx-auto">
+      <div class="card-header">
+        <h2>Your Tickets</h2>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover text-center">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Created By</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ticket of tickets">
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.description }}</td>
+                <td>{{ ticket.statut }}</td>
+                <td>{{ ticket.user.name }}</td> <!-- Display the user who created the ticket -->
+                <td>
+                  <button
+                    class="btn"
+                    [ngClass]="{
+                      'btn-secondary': ticket.statut === 'Closed',
+                      'btn-warning': ticket.statut === 'In Progress',
+                      'btn-success': ticket.statut === 'Open'
+                    }"
+                    [disabled]="ticket.statut === 'Closed'"
+                    (click)="takeTicket(ticket)"
+                  >
+                    {{ ticket.statut === 'Open' ? 'Start' : (ticket.statut === 'In Progress') ? 'Complete' : 'Done' }}
+                  </button>
+                </td>
+              </tr>
+              
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

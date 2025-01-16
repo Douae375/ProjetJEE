@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensures content is vertically centered */
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+    position: fixed;
+    width: calc(100% - 250px); /* The remaining width after the sidebar */
+    top: 0;
+    left: 250px; /* Align with the sidebar */
+    z-index: 1000; /* Ensure the navbar stays on top */
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-left ion-icon {
+    margin-right: 10px;
+  }
+  
+  .header-right ion-icon {
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  

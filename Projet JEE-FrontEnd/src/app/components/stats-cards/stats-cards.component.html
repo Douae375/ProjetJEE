@@ -1,0 +1,12 @@
+<div class="stats-container">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <div class="stat-icon">
+        <i [ngClass]="stat.icon"></i>
+      </div>
+      <div class="stat-info">
+        <p class="stat-label">{{ stat.label }}</p>
+        <p class="stat-value">{{ stat.value }}</p>
+      </div>
+    </div>
+  </div>
+  

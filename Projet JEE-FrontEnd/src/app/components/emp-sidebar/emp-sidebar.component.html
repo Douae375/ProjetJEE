@@ -1,0 +1,47 @@
+<aside class="aside is-placed-left is-expanded">
+    <div class="aside-tools">
+      <div class="aside-tools-label">
+        <span><b>Employee</b> Home</span>
+      </div>
+    </div>
+    <div class="menu is-menu-main">
+      <p class="menu-label">General</p>
+      <ul class="menu-list">
+        <li>
+          <a (click)="selectTable('EmpDashboard')" [ngClass]="{ 'is-active': selectedTableType === 'EmpDashboard' }" class="has-icon">
+            <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
+            <span class="menu-item-label">Dashboard</span>
+          </a>
+        </li>
+      </ul>
+      <p class="menu-label">Tables</p>
+      <ul class="menu-list">
+        <li>
+          <a (click)="selectTable('MyProfile')" [ngClass]="{ 'is-active': selectedTableType === 'MyProfile' }" class="has-icon">
+            <span class="icon"><i class="mdi mdi-account"></i></span>
+            <span class="menu-item-label">My Profile</span>
+          </a>
+        </li>
+        <li>
+          <a (click)="selectTable('MyLeaves')" [ngClass]="{ 'is-active': selectedTableType === 'MyLeaves' }" class="has-icon">
+            <span class="icon"><i class="mdi mdi-calendar-multiselect"></i></span>
+            <span class="menu-item-label">My Leaves</span>
+          </a>
+        </li>
+        <li>
+          <a (click)="selectTable('MySalaries')" [ngClass]="{ 'is-active': selectedTableType === 'MySalaries' }" class="has-icon">
+            <span class="icon"><i class="mdi mdi-cash"></i></span>
+            <span class="menu-item-label">My Salaries</span>
+          </a>
+        </li>
+      </ul>
+     
+    </div>
+    <div class="aside-logout">
+      <button (click)="logout()" class="logout-button">
+        <span class="icon"><i class="mdi mdi-logout"></i></span>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+  

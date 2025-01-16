@@ -1,0 +1,100 @@
+.content-wrapper {
+  padding-top: 100px; /* Adjust this value as needed based on the height of the navbar */
+}
+
+.container {
+  margin-top: 100px; /* Reset any additional margin if previously added */
+}
+
+.card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.table-responsive {
+  margin: 0 auto;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Define colors for different statuses */
+.table-secondary {
+  background-color: #e9ecef; /* Gray for taken */
+}
+
+.table-warning {
+  background-color: #ffeeba; /* Orange for In Progress */
+}
+
+.table-success {
+  background-color: #c3e6cb; /* Green for Open */
+}
+
+/* Button colors */
+.btn-secondary {
+  background-color: #6c757d; /* Gray button for taken */
+}
+
+.btn-warning {
+  background-color: #ffc107; /* Orange button for In Progress */
+}
+
+.btn-success {
+  background-color: #28a745; /* Green button for Open */
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: #ffffff;
+  border-color: #dc3545;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+}
+
+/* Background and layout adjustments */
+.bg-white {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: 100vh; /* Full height for better visual impact */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Welcome message styling */
+.welcome-message h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.welcome-message p.lead {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.welcome-message button {
+  margin-top: 10px;
+  background-color: #dc3545; /* Red background for logout button */
+  color: #fff;
+  border: none;
+}
+
+.welcome-message button:hover {
+  background-color: #c82333; /* Darken red on hover */
+}

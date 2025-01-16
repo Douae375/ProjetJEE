@@ -1,0 +1,135 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2>{{ tableType }} Management</h2>
+      <button class="btn btn-success" (click)="openModal(modalContent)">
+        <i class="fas fa-plus"></i> Add {{ tableType }}
+      </button>
+    </div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover text-center">
+          <thead>
+            <tr>
+              <th *ngFor="let field of entityFields">{{ field.label }}</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let entity of entities">
+              <td *ngFor="let field of entityFields">{{ getNestedValue(entity, field.name) }}</td>
+              <td>
+                <div class="btn-group" role="group">
+                  <!-- Actions spécifiques pour les Congés -->
+                  <ng-container *ngIf="tableType === 'Conges'; else defaultActions">
+                    <button (click)="approveConge(entity.id)" class="btn btn-success">
+                      <i class="fas fa-check"></i> Approuver
+                    </button>
+                    <button (click)="rejectConge(entity.id)" class="btn btn-danger">
+                      <i class="fas fa-times"></i> Rejeter
+                    </button>
+                  </ng-container>
+                  <!-- Actions par défaut pour les autres tables -->
+                  <ng-template #defaultActions>
+                    <button (click)="editEntity(entity, modalContent)" class="icon-button">
+                      <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button (click)="deleteEntity(entity)" class="icon-button">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </ng-template>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <ng-template #modalContent let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">{{ isEditing ? 'Edit' : 'Add' }} {{ tableType }}</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <!-- Form for Department -->
+      <ng-container *ngIf="tableType === 'Departement'; else employeeForm">
+        <form [formGroup]="form">
+          <div class="mb-3">
+            <label for="name" class="form-label">Department Name:</label>
+            <input id="name" formControlName="name" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="managerId" class="form-label">Manager:</label>
+            <select id="managerId" class="form-control" formControlName="managerId">
+              <option *ngFor="let employee of employees" [value]="employee.id">
+                {{ employee.firstName }} {{ employee.lastName }}
+              </option>
+            </select>
+          </div>
+        </form>
+      </ng-container>
+
+      <!-- Form for Employees -->
+      <ng-template #employeeForm>
+        <ng-container *ngIf="tableType === 'Employees'; else defaultForm">
+          <form [formGroup]="form">
+            <div class="mb-3">
+              <label for="firstName" class="form-label">First Name:</label>
+              <input id="firstName" formControlName="firstName" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Last Name:</label>
+              <input id="lastName" formControlName="lastName" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input id="email" type="email" formControlName="email" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="position" class="form-label">Position:</label>
+              <input id="position" formControlName="position" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="contractType" class="form-label">Contract Type:</label>
+              <select id="contractType" class="form-control" formControlName="contractType">
+                <option value="CDI">CDI</option>
+                <option value="CDD">CDD</option>
+                <option value="Stage">Stage</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="departmentId" class="form-label">Department:</label>
+              <select id="departmentId" class="form-control" formControlName="departmentId">
+                <option *ngFor="let department of departments" [value]="department.id">
+                  {{ department.name }}
+                </option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="hireDate" class="form-label">Hire Date:</label>
+              <input id="hireDate" type="date" formControlName="hireDate" class="form-control" />
+            </div>
+          </form>
+        </ng-container>
+
+        <!-- Default Form -->
+        <ng-template #defaultForm>
+          <form [formGroup]="form">
+            <div class="mb-3" *ngFor="let field of entityFields">
+              <label [for]="field.name" class="form-label">{{ field.label }}:</label>
+              <input [id]="field.name" [formControlName]="field.name" class="form-control" />
+            </div>
+          </form>
+        </ng-template>
+      </ng-template>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="onSubmit(); modal.close()">Save</button>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,20 @@
+.icon-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+  
+  .edit-icon {
+    color: #f1c40f; /* Yellow for edit icon */
+  }
+  
+  .delete-icon {
+    color: #e74c3c; /* Red for delete icon */
+  }
+  
+  .icon-button:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
